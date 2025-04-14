@@ -1,4 +1,4 @@
-package com.CPAN_A3_DV.cpan228_a3_dv.config;
+package com.CPAN_PROJECT_DV.cpan228_project_dv.config;
 
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

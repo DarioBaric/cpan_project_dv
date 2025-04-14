@@ -1,7 +1,7 @@
-package com.CPAN_A3_DV.cpan228_a3_dv.data;
+package com.CPAN_PROJECT_DV.cpan228_project_dv.data;
 
-import com.CPAN_A3_DV.cpan228_a3_dv.model.Item;
-import com.CPAN_A3_DV.cpan228_a3_dv.model.Brand;
+import com.CPAN_PROJECT_DV.cpan228_project_dv.model.Item;
+import com.CPAN_PROJECT_DV.cpan228_project_dv.model.Brand;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,13 +1,13 @@
-package com.CPAN_A3_DV.cpan228_a3_dv;
+package com.CPAN_PROJECT_DV.cpan228_project_dv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CpanA3DvApplication {
+public class CpanPROJECTdvApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CpanA3DvApplication.class, args);
+		SpringApplication.run(CpanPROJECTdvApplication.class, args);
 	}
 
 }

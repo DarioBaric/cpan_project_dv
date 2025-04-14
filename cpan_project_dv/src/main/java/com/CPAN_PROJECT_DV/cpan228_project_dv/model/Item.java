@@ -1,4 +1,4 @@
-package com.CPAN_A3_DV.cpan228_a3_dv.model;
+package com.CPAN_PROJECT_DV.cpan228_project_dv.model;
 
 import jakarta.persistence.*;
 import lombok.*;
