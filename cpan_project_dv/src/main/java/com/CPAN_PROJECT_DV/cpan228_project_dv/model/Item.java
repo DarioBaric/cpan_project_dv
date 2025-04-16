@@ -31,13 +31,20 @@ public class Item {
     @JoinColumn(name = "distribution_id")
     private Distribution distribution;
 
+    
+    public Item(Long id, String name, Brand brand, int yearOfCreation, double price) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.yearOfCreation = yearOfCreation;
+        this.price = price;
+    }
+
     public Distribution getDistribution() {
         return distribution;
     }
-    
+
     public void setDistribution(Distribution distribution) {
         this.distribution = distribution;
     }
-    
-
 }
