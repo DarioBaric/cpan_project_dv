@@ -26,4 +26,18 @@ public class Item {
 
     @Column(nullable = false)
     private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "distribution_id")
+    private Distribution distribution;
+
+    public Distribution getDistribution() {
+        return distribution;
+    }
+    
+    public void setDistribution(Distribution distribution) {
+        this.distribution = distribution;
+    }
+    
+
 }
