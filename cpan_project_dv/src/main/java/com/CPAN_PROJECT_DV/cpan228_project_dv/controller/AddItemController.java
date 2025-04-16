@@ -23,7 +23,7 @@ public class AddItemController {
 
     @ModelAttribute("item")
     public Item item() {
-        return new Item(null, "", Brand.BALENCIAGA, 2025, 0.0);
+        return new Item(null, "", Brand.BALENCIAGA, 2025, 0.0, 10);
     }
 
     @ModelAttribute

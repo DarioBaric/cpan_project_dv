@@ -22,19 +22,19 @@ public class DataLoader implements CommandLineRunner {
         Distribution distribution = new Distribution(null, "Main Distribution", 37.7749, -122.4194, null);
         distributionRepo.save(distribution);
 
-        Item item1 = new Item(null, "Item 1", Brand.BALENCIAGA, 2022, 1500.0);
+        Item item1 = new Item(null, "Item 1", Brand.BALENCIAGA, 2022, 1500.0, 10);
         item1.setDistribution(distribution);
 
-        Item item2 = new Item(null, "Item 2", Brand.DIOR, 2023, 2200.0);
+        Item item2 = new Item(null, "Item 2", Brand.DIOR, 2023, 2200.0, 5);
         item2.setDistribution(distribution);
 
-        Item item3 = new Item(null, "Item 3", Brand.GUCCI, 2021, 1800.0);
+        Item item3 = new Item(null, "Item 3", Brand.GUCCI, 2021, 1800.0,15);
         item3.setDistribution(distribution);
 
-        Item item4 = new Item(null, "Item 4", Brand.PRADA, 2020, 2500.0);
+        Item item4 = new Item(null, "Item 4", Brand.PRADA, 2020, 2500.0, 15);
         item4.setDistribution(distribution);
 
-        Item item5 = new Item(null, "Item 5", Brand.STONE_ISLAND, 2024, 1200.0);
+        Item item5 = new Item(null, "Item 5", Brand.STONE_ISLAND, 2024, 1200.0, 5);
         item5.setDistribution(distribution);
 
         itemRepo.save(item1);

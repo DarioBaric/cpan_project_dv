@@ -26,15 +26,19 @@ public class Item {
     @Column(nullable = false)
     private double price;
 
+    @Column (name = "quantity", nullable = false)
+    private int quantity;
+
     @ManyToOne
     @JoinColumn(name = "distribution_id", nullable = true) 
     private Distribution distribution;
 
-    public Item(Long id, String name, Brand brand, int yearOfCreation, double price) {
+    public Item(Long id, String name, Brand brand, int yearOfCreation, double price, int quantity) {
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.yearOfCreation = yearOfCreation;
         this.price = price;
+        this.quantity = quantity;
     }
 }

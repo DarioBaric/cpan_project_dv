@@ -17,6 +17,7 @@
                     <th>Year</th>
                     <th>Price</th>
                     <th>Actions</th>
+                    <th>Quantity</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@
                     <td th:text="${item.brand}"></td>
                     <td th:text="${item.yearOfCreation}"></td>
                     <td th:text="${item.price}"></td>
+                    <td th:text="${item.quantity}"></td>
                     <td>
                         <form th:action="@{/additem/delete/{id}(id=${item.id})}" method="post">
                             <input type="hidden" name="_method" value="delete"/>
