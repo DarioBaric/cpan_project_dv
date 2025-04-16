@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "distribution")
 public class Distribution {
 
     @Id
@@ -22,9 +23,6 @@ public class Distribution {
     @OneToMany(mappedBy = "distribution", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
 
-    public Distribution() {
-    }
-
     public Distribution(Long id, String name, double latitude, double longitude, List<Item> items) {
         this.id = id;
         this.name = name;
@@ -33,7 +31,6 @@ public class Distribution {
         this.items = items;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-
+    <title>Distribution Centers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-    
+    <div class="container mt-5">
+        <h2>Distribution Centers</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="center : ${centers}">
+                    <td th:text="${center.id}"></td>
+                    <td th:text="${center.name}"></td>
+                    <td th:text="${center.latitude}"></td>
+                    <td th:text="${center.longitude}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

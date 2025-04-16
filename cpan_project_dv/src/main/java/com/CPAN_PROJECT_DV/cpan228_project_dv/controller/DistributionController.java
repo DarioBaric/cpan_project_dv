@@ -16,54 +16,58 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/distributioncentres")
+@RequestMapping("/distributions")
 public class DistributionController {
 
     @Autowired
-    private DistributionRepository centreRepo;
+    private DistributionRepository distributionRepo;
 
-    @ModelAttribute("distributionCentre")
-    public Distribution distributionCentre() {
-        return new Distribution(null, "Default Centre", 0.0, 0.0, null);
+    @ModelAttribute("distribution")
+    public Distribution distribution() {
+        return new Distribution(null, "Default Distribution", 0.0, 0.0, null);
     }
 
-    @GetMapping
+    @GetMapping("/distributioncentres")
     @PreAuthorize("hasRole('ADMIN')")
-    public String showDistributionCentres(Model model) {
-        log.info("Fetching all distribution centres");
-        List<Distribution> centres = centreRepo.findAll();
-        model.addAttribute("centres", centres);
-        return "distributioncentres"; // Points to the distributioncentres.html template
+    public String showDistributions(Model model) {
+        log.info("Fetching all distributions");
+        List<Distribution> distributions = distributionRepo.findAll();
+        model.addAttribute("distributioncentres", distributions);
+        return "distributioncentres";
     }
 
     @GetMapping("/{id}/items")
     @PreAuthorize("hasRole('ADMIN')")
-    public String listItemsInCentre(@PathVariable Long id, Model model) {
-        Distribution centre = centreRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid centre ID"));
-        model.addAttribute("items", centre.getItems());
-        model.addAttribute("centreName", centre.getName());
-        log.info("Displaying items for distribution centre ID: {}", id);
+    public String listItemsInDistribution(@PathVariable Long id, Model model) {
+        Distribution distribution = distributionRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid distribution ID"));
+        model.addAttribute("items", distribution.getItems());
+        model.addAttribute("distributionName", distribution.getName());
+        log.info("Displaying items for distribution ID: {}", id);
         return "listitems";
     }
 
     @PostMapping("/{id}/additem")
     @PreAuthorize("hasRole('ADMIN')")
-    public String addItemToCentre(@PathVariable Long id, @ModelAttribute("item") Item item, Model model) {
-        Distribution centre = centreRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid centre ID"));
-        item.setDistribution(centre);
-        centre.getItems().add(item);
-        centreRepo.save(centre);
-        log.info("Added item to distribution centre ID: {}", id);
-        return "redirect:/distributioncentres";
+    public String addItemToDistribution(@PathVariable Long id, @ModelAttribute("item") Item item, Model model) {
+        Distribution distribution = distributionRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid distribution ID"));
+        item.setDistribution(distribution);
+        distribution.getItems().add(item);
+        distributionRepo.save(distribution);
+        log.info("Added item to distribution ID: {}", id);
+        return "redirect:/distributions";
     }
 
     @PostMapping("/{id}/deleteitem/{itemId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String deleteItemFromCentre(@PathVariable Long id, @PathVariable Long itemId) {
-        Distribution centre = centreRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid centre ID"));
-        centre.getItems().removeIf(item -> item.getId().equals(itemId));
-        centreRepo.save(centre);
-        log.info("Deleted item ID: {} from distribution centre ID: {}", itemId, id);
-        return "redirect:/distributioncentres";
+    public String deleteItemFromDistribution(@PathVariable Long id, @PathVariable Long itemId) {
+        Distribution distribution = distributionRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid distribution ID"));
+        distribution.getItems().removeIf(item -> item.getId().equals(itemId));
+        distributionRepo.save(distribution);
+        log.info("Deleted item ID: {} from distribution ID: {}", itemId, id);
+        return "redirect:/distributions";
     }
 }
+

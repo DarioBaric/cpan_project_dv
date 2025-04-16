@@ -14,15 +14,12 @@ import java.util.List;
 @Repository
 public interface DistributionRepository extends JpaRepository<Distribution, Long> {
 
-    // Find all distribution centres and paginate the result
     @NonNull
     Page<Distribution> findAll(@NonNull Pageable pageable);
 
-    // Find all distribution centres sorted by name in ascending order
     List<Distribution> findAllByOrderByNameAsc();
 
-    // Custom query to find distribution centres within a certain radius based on latitude and longitude
-    @Query("SELECT d FROM DistributionCentre d WHERE "
+    @Query("SELECT d FROM Distribution d WHERE " 
          + "SQRT(POWER(d.latitude - :latitude, 2) + POWER(d.longitude - :longitude, 2)) <= :radius")
     List<Distribution> findWithinRadius(
         @Param("latitude") double latitude,
@@ -30,7 +27,6 @@ public interface DistributionRepository extends JpaRepository<Distribution, Long
         @Param("radius") double radius
     );
 
-    // Custom query to find a distribution centre by name
-    @Query("SELECT d FROM DistributionCentre d WHERE d.name = :name")
+    @Query("SELECT d FROM Distribution d WHERE d.name = :name") 
     List<Distribution> findByName(@Param("name") String name);
 }

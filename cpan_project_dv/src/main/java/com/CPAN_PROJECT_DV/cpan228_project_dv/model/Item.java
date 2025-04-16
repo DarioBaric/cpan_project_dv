@@ -26,23 +26,15 @@ public class Item {
     @Column(nullable = false)
     private double price;
 
+    @ManyToOne
+    @JoinColumn(name = "distribution_id", nullable = true) 
     private Distribution distribution;
 
-    // Constructor matching DataLoader usage
     public Item(Long id, String name, Brand brand, int yearOfCreation, double price) {
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.yearOfCreation = yearOfCreation;
         this.price = price;
-    }
-
-    // Add the getter and setter for distributionCentre
-    public Distribution getDistribution() {
-        return distribution;
-    }
-
-    public void setDistribution(Distribution distribution) {
-        this.distribution = distribution;
     }
 }
