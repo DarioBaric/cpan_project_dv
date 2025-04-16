@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 
@@ -14,7 +15,8 @@ import java.util.List;
 public interface DistributionRepository extends JpaRepository<Distribution, Long> {
 
     // Find all distribution centres and paginate the result
-    Page<Distribution> findAll(Pageable pageable);
+    @NonNull
+    Page<Distribution> findAll(@NonNull Pageable pageable);
 
     // Find all distribution centres sorted by name in ascending order
     List<Distribution> findAllByOrderByNameAsc();

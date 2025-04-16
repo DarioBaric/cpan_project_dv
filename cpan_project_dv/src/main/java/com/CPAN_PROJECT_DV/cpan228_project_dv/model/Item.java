@@ -5,7 +5,6 @@ import lombok.*;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "items")
 public class Item {
@@ -27,11 +26,9 @@ public class Item {
     @Column(nullable = false)
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "distribution_id")
     private Distribution distribution;
 
-    
+    // Constructor matching DataLoader usage
     public Item(Long id, String name, Brand brand, int yearOfCreation, double price) {
         this.id = id;
         this.name = name;
@@ -40,6 +37,7 @@ public class Item {
         this.price = price;
     }
 
+    // Add the getter and setter for distributionCentre
     public Distribution getDistribution() {
         return distribution;
     }

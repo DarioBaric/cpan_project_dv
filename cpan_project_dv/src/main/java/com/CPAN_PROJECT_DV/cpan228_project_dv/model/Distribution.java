@@ -19,7 +19,7 @@ public class Distribution {
     @Column(nullable = false)
     private double longitude;
 
-    @OneToMany(mappedBy = "distributionCentre", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "distribution", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
 
     public Distribution() {
@@ -34,7 +34,6 @@ public class Distribution {
     }
 
     // Getters and Setters
-
     public Long getId() {
         return id;
     }
